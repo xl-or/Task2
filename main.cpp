@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    int number[10] = {
+    unsigned char number[10] = {
         0x3F,           //0
         0x06,           //1
         0x5B,           //2
@@ -18,13 +18,17 @@ int main(void)
     };
     DDRD = 0xFF;
     PORTD = 0x00;
+    unsigned char i = 0;
     while (1) 
     {
-       for (int i=0;i<10;i++)
-       {
-           PORTD = number[i];
-           _delay_ms(1000);
-       }
+        if (i < 10){
+            PORTD = number[i];
+            i++;
+            _delay_ms(1000);  
+        }
+        else{
+            i = 0;
+        }        
     }
 }
 
