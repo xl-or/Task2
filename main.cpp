@@ -21,14 +21,9 @@ int main(void)
     unsigned char i = 0;
     while (1) 
     {
-        if (i < 10){
-            PORTD = number[i];
-            i++;
-            _delay_ms(1000);  
-        }
-        else{
-            i = 0;
-        }        
+        PORTD = number[i];
+        i = (i+1)%10;
+        _delay_ms(1000);         
     }
 }
 
